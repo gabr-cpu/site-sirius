@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clube de Desbravadores Sirius</title>
+  <link rel="stylesheet" href="estilos.css" />
+  <script>
+    function enviarWhatsApp(event) {
+      event.preventDefault();
+      const nome = document.querySelector('[name="nome"]').value;
+      const idade = document.querySelector('[name="idade"]').value;
+      const nascimento = document.querySelector('[name="nascimento"]').value;
+      const perfil = document.querySelector('[name="perfil"]:checked').value;
+      const jaFez = document.querySelector('[name="jaFez"]:checked').value;
+      const clubeAnterior = document.querySelector('[name="clubeAnterior"]').value;
+      const endereco = document.querySelector('[name="endereco"]').value;
+      const bairro = document.querySelector('[name="bairro"]').value;
+      const telefone = document.querySelector('[name="telefone"]').value;
+
+      let mensagem = "📝 INSCRIÇÃO CLUBE DE DESBRAVADORES SIRIUS%0A";
+      mensagem += "Nome: " + nome + "%0A";
+      mensagem += "Idade: " + idade + "%0A";
+      mensagem += "Data de Nascimento: " + nascimento + "%0A";
+      mensagem += "Eu sou: " + perfil + "%0A";
+      mensagem += "Já fez parte de algum clube DBV?: " + jaFez + "%0A";
+      if (jaFez === "Sim") {
+        mensagem += "Clube Anterior: " + clubeAnterior + "%0A";
+      }
+      mensagem += "Endereço: " + endereco + "%0A";
+      mensagem += "Bairro: " + bairro + "%0A";
+      mensagem += "Telefone: " + telefone + "%0A";
+
+      const numero = "5592991806355"; // Número do WhatsApp
+      const url = "https://wa.me/" + numero + "?text=" + mensagem;
+      window.open(url, "_blank");
+    }
+  </script>
+</head>
+<body>
+  <div id="root">
+    <section style="text-align:center; padding:40px; background:linear-gradient(to bottom, #1e3a8a, #172554); color:white;">
+      <img src="logo-sirius.png" alt="Logotipo do Clube Sirius" style="width:180px; height:180px;" />
+      <h1 style="font-size:2rem; max-width:600px; margin:20px auto;">
+        Clube de Desbravadores Sirius – Brilhando como a estrela mais forte do céu
+      </h1>
+    </section>
+
+    <section style="text-align:center; padding:40px; background:#1e40af; color:white;">
+      <h2 style="font-size:1.5rem; margin-bottom:20px;">Fale Conosco</h2>
+      <p>(92) 99180-6355</p>
+      <p>(92) 99174-1730</p>
+    </section>
+
+    <section style="text-align:center; padding:40px; background:#172554; color:white;">
+      <h2 style="font-size:1.5rem; margin-bottom:20px;">📝 INSCRIÇÃO CLUBE DE DESBRAVADORES SIRIUS</h2>
+      <form onsubmit="enviarWhatsApp(event)" style="max-width:600px; margin:0 auto; text-align:left; background:#1e3a8a; padding:20px; border-radius:15px;">
+        
+        <label>Nome completo:</label><br>
+        <input type="text" name="nome" required style="width:100%; padding:10px; margin-bottom:15px;"><br>
+
+        <label>Idade:</label><br>
+        <input type="number" name="idade" required style="width:100%; padding:10px; margin-bottom:15px;"><br>
+
+        <label>Data de nascimento:</label><br>
+        <input type="date" name="nascimento" required style="width:100%; padding:10px; margin-bottom:15px;"><br>
+
+        <label>Eu sou:</label><br>
+        <input type="radio" name="perfil" value="Desbravador ativo" required> Desbravador ativo<br>
+        <input type="radio" name="perfil" value="Convidado" required> Convidado<br>
+        <input type="radio" name="perfil" value="Novato" required> Novato<br><br>
+
+        <label>Já fez parte de algum clube DBV?</label><br>
+        <input type="radio" name="jaFez" value="Sim" required onclick="document.getElementById('clubeExtra').style.display='block'"> Sim<br>
+        <input type="radio" name="jaFez" value="Não" required onclick="document.getElementById('clubeExtra').style.display='none'"> Não<br>
+
+        <div id="clubeExtra" style="display:none; margin-top:10px;">
+          <label>Qual clube já fez parte?</label><br>
+          <input type="text" name="clubeAnterior" style="width:100%; padding:10px; margin-bottom:15px;"><br>
+        </div>
+
+        <label>Endereço:</label><br>
+        <input type="text" name="endereco" required style="width:100%; padding:10px; margin-bottom:15px;"><br>
+
+        <label>Bairro:</label><br>
+        <input type="text" name="bairro" required style="width:100%; padding:10px; margin-bottom:15px;"><br>
+
+        <label>Telefone para contato:</label><br>
+        <input type="tel" name="telefone" required style="width:100%; padding:10px; margin-bottom:15px;"><br>
+
+        <button type="submit" style="background:#facc15; color:black; padding:15px 30px; border:none; border-radius:10px; font-weight:bold; cursor:pointer;">
+          Enviar inscrição
+        </button>
+      </form>
+    </section>
+
+    <section style="text-align:center; padding:40px; background:#1e40af; color:white;">
+      <h2 style="font-size:1.5rem; margin-bottom:20px;">Localização</h2>
+      <iframe src="https://www.google.com/maps?q=Alto+Furtado+271,+Iranduba,+AM&output=embed"
+              width="100%" height="300" style="border-radius:20px; max-width:600px;"></iframe>
+      <p style="margin-top:10px;">Alto Furtado, 271 – Iranduba, AM</p>
+    </section>
+
+    <footer style="text-align:center; padding:20px; background:#0f172a; color:white;">
+      © 2025 Clube de Desbravadores Sirius. Todos os direitos reservados.
+    </footer>
+  </div>
+</body>
+</html>
